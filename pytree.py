@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 import subprocess
 import sys
-import subprocess
-import sys
 import os
 import re #regular expression
 from os import listdir, sep
@@ -13,7 +11,7 @@ from sys import argv
 
 def listdir(dir):
     listdir = os.listdir(dir) # returns a list containing the names of the entries in the directory given by path.
-    files = [x for x in listdir(dir) if isdir(dir+sep+x)] 
+    files = [x for x in listdir(dir) if listdir[0] != ('.')] 
     files = sorted(files, key=lambda :re.sub('[^0-9a-zA-Z]+','', s).lower())
     return files
 
@@ -40,10 +38,10 @@ def tree(dir, padding, print_files=False, isLast=False, isFirst=False):
 if __name__ == '__main__':
     if len(sys.argv) == 1:
         path = os.getcwd()
-        print('.')
+        #print('.')
     else:
         path = sys.argv[1]
-        print(path)
+        #print(path)
 tree(path,'')
 
 
