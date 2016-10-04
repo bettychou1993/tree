@@ -2,7 +2,7 @@
 import subprocess
 import sys
 import os
-import re 
+import re
 from os import listdir, sep
 from os.path import abspath, basename, isdir
 from sys import argv
@@ -11,8 +11,8 @@ from sys import argv
 
 
 def listdir(dir):
-    listdir = os.listdir(dir) 
-    files = [x for x in listdir(dir) if listdir[0] != ('.')] 
+    listdir = os.listdir(dir)
+    files = [x for x in listdir(dir) if listdir[0] != ('.')]
     files = sorted(files, key=lambda: re.sub('[^0-9a-zA-Z]+', '', s).lower())
     return files
 
@@ -45,13 +45,3 @@ if __name__ == '__main__':
         path = sys.argv[1]
 tree(path, '')
 
-
-
-
-
-
-
-
-if __name__ == '__main__':
-    # just for demo
-    subprocess.run(['tree'] + sys.argv[1:])
