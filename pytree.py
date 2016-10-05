@@ -1,4 +1,5 @@
-:#!/usr/bin/env python3 import subprocess
+:#!/usr/bin/env python3
+import subprocess
 import sys
 import os
 import re
@@ -9,19 +10,19 @@ from sys import argv
 # YOUR CODE GOES here
 
 
-def listdir(dir):
-    dirs = os.listdir(dir)
+def listdir(path):
+    dirs = os.listdir(path)
     files = [x for x in dirs if x[0] != ('.')]
     files = sorted(files, key=lambda s: re.sub('[^0-9a-zA-Z]+', '', s).lower())
     return files
 
 
-def tree(dir, padding, print_files=False, isLast=False, isFirst=False):
+def tree(path, padding, print_files=False, isLast=False, isFirst=False):
     count = 0
-    dirs = listdir(dir)
+    dirs = listdir(path)
     for i, file in enumerate(dirs):
         count += 1
-        path = dir + sep + file
+        path = path + sep + file
         isLast = (i == len(dirs))
         if isdir(path):
             if count == len(file):
