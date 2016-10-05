@@ -1,5 +1,4 @@
-#!/usr/bin/env python3
-import subprocess
+:#!/usr/bin/env python3 import subprocess
 import sys
 import os
 import re
@@ -11,20 +10,21 @@ from sys import argv
 
 
 def listdir(dir):
-    listdir = os.listdir(dir)
-    files = [x for x in listdir(dir) if listdir[0] != ('.')]
-    files = sorted(files, key=lambda: re.sub('[^0-9a-zA-Z]+', '', s).lower())
+    dirs = os.listdir(dir)
+    files = [x for x in dirs if x[0] != ('.')]
+    files = sorted(files, key=lambda s: re.sub('[^0-9a-zA-Z]+', '', s).lower())
     return files
 
 
 def tree(dir, padding, print_files=False, isLast=False, isFirst=False):
-    files = []
-    for i, file in enumerate(files):
+    count = 0
+    dirs = listdir(dir)
+    for i, file in enumerate(dirs):
         count += 1
         path = dir + sep + file
-        isLast = i == last
+        isLast = (i == len(dirs))
         if isdir(path):
-            if count == len(files):
+            if count == len(file):
                 if isFirst:
                     tree(path, padding, print_files, isLast, False)
                 else:
@@ -43,4 +43,4 @@ if __name__ == '__main__':
         path = os.getcwd()
     else:
         path = sys.argv[1]
-tree(path, '')
+    tree(path, '')
